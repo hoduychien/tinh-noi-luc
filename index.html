@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Đoàn Ngọc Phôi</title>
+    <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-main">
+                <div class="header-left">
+                    <div class="header-logo">
+                        <img src="./image/logo.svg" alt="">
+                    </div>
+                    <div class="header-search-box">
+                        <input type="text" placeholder="Tìm kiếm trên Facebook...">
+                        <img src="./image/search-icon.svg" alt="">
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-right-item">
+                        <img src="./image/menu.svg" alt="">
+                    </div>
+                    <div class="header-right-item">
+                        <img src="./image/messenger.svg" alt="">
+                    </div>
+                    <div class="header-right-item">
+                        <img src="./image/nofitication.svg" alt="">
+                    </div>
+
+                    <div class="header-right-avatar">
+                        <img src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-1/277365674_3165881523731905_4295744927187752893_n.jpg?stp=dst-jpg_p200x200&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=573C1Tzv3BsAX8b-z8a&tn=SKzPEZ831S3Owiqw&_nc_ht=scontent.fhan14-2.fna&oh=00_AT_qAhe1YpWauOFguPNuVa3fCruB5fN7xIZhPTy3y5qy3w&oe=633FC4B3"
+                            alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="heading">
+                Tính Nội Suy Online
+            </div>
+            <div class="desc">
+                Phần mền nội suy, công thức nội suy có thể là 1 phần không thể thiếu trong bất kể lĩnh vực, môn học,
+                công việc nào của anh em sinh viên chúng ta.
+            </div>
+
+            <form class="main-form" onsubmit="return validateForm()">
+                <div class="form-item">
+                    <h3>x1</h3>
+                    <div class="form-input">
+                        <input type="number" id="value-x1" placeholder="Nhập: x1">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <h3>x2</h3>
+                    <div class="form-input">
+                        <input type="number" id="value-y1" placeholder="Nhập: y1">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <h3>x</h3>
+                    <div class="form-input">
+                        <input type="number" id="value-x" placeholder="Nhập: x">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <h3>Kết quả (y)</h3>
+                    <div class="form-input">
+                        <input type="number" id="value-y" placeholder="Kết quả: y">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <h3>x2</h3>
+                    <div class="form-input">
+                        <input type="number" id="value-x2" placeholder="Nhập: x2">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <h3>y2</h3>
+                    <div class="form-input">
+                        <input type="number" id="value-y2" placeholder="Nhập: y2">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="form-input-btn">
+                        <button class="btn-submit" type="submit" id="submit-result">
+                            Tính nội suy
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="heading">
+                Bảng kết quả
+            </div>
+            <table style="width:100%">
+                <tr>
+                    <th>x1</th>
+                    <th>y1</th>
+                    <th>x2</th>
+                    <th>y2</th>
+                    <th>x</th>
+                    <th>y</th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>2022 Đoàn Ngọc Phôi - 18XD1 - Trường Đại Học Kiến Trúc Đà Nẵng</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('submit-result').addEventListener('click',
+            tinh = () => {
+                let x1 = document.querySelector("#value-x1").value;
+                let y1 = document.querySelector("#value-y1").value;
+                let x = document.querySelector("#value-x").value;
+                let y = document.querySelector("#value-y");
+                let x2 = document.querySelector("#value-x2").value;
+                let y2 = document.querySelector("#value-y2").value;
+                let table = document.querySelector('table');
+
+                if (!x1 && !y1 && !x && !x2 && !y2) {
+                    alert("Nhập thiếu rồi thằng ***")
+                }
+                else {
+                    let kq = (y2 * (x - x1) + y1 * (x2 - x)) / (x2 - x1);
+                    y.value = kq;
+
+                    let template = `<tr>
+                            <th>${x1}</th>
+                            <th>${y1}</th>
+                            <th>${x2}</th>
+                            <th>${y2}</th>
+                            <th>${x}</th>
+                            <th>${y.value}</th>
+                        </tr>`;
+                    table.innerHTML += template;
+                }
+            })
+
+    </script>
+</body>
+
+</html>
